@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            width: 320px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #5b4bdb;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid #9face6;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #5b4bdb;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #3929a8;
+            transform: scale(1.05);
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        #score {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e67e22;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Guess the Number</h1>
+
+        <p>Guess a number between 1 and 10</p>
+
+        <input id="gnum" type="number" min="1" max="10"
+               placeholder="Enter your guess">
+
+        <br>
+
+        <button onclick="check()">Check</button>
+
+        <p id="result">You are Wrong/Right</p>
+
+        <p id="score">Score : 10</p>
+    </div>
+
+    <script>
+        var guessnumber = document.getElementById("gnum");
+        var result = document.getElementById("result");
+        var randomnumber = Math.floor(Math.random() * 10) + 1;
+        var score = document.getElementById("score");
+        var totalscore = 10;
+
+        console.log(randomnumber);
+
+        function check() {
+            var enterednum = guessnumber.value;
+
+            if (randomnumber == enterednum) {
+                result.textContent = "Right! 🎉";
+                result.style.color = "green";
+                alert("You Won...!");
+            } else {
+                result.textContent = "Wrong! Try again.";
+                result.style.color = "red";
+                totalscore -= 1;
+                score.textContent = "Score : " + totalscore;
+            }
+        }
+    </script>
+
+</body>
+</html>
